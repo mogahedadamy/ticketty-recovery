@@ -18,33 +18,35 @@ import {
 export const metadata: Metadata = {
   title: "Ticketty — منظومة إدارة شركات النقل البري",
   description:
-    "منصة ERP تشغيلية لشركات النقل في السودان: الرحلات، المبيعات، التحصيل، والتقارير في نظام واحد آمن.",
+    "منظومة تشغيل لشركات النقل البري في السودان لإدارة الرحلات والحجوزات والمبيعات والتحصيل والتقارير في مساحة عمل واحدة.",
 };
+
+const trialWhatsAppUrl = "https://wa.me/249906346148?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9%20Ticketty%20%D8%A7%D9%84%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%2030%20%D9%8A%D9%88%D9%85%D8%A7%D9%8B.";
 
 const capabilities = [
   {
     icon: Bus,
     title: "تشغيل الأسطول",
     description:
-      "جدولة الرحلات، إدارة المركبات والسائقين، ومتابعة الحضور والانطلاق لحظة بلحظة.",
+      "تنظيم الرحلات وإدارة بيانات المركبات والسائقين ضمن مساحة عمل واحدة.",
   },
   {
     icon: Ticket,
     title: "المبيعات والتذاكر",
     description:
-      "نقطة بيع سريعة، إصدار تذاكر بباركود، وسياسات إرجاع واضحة لكل فرع.",
+      "إدارة الحجوزات والمبيعات وإصدار التذاكر وفق إجراءات الشركة.",
   },
   {
     icon: ChartColumn,
     title: "التقارير والمالية",
     description:
-      "لوحات تحكم تشغيلية، تسويات نقدية يومية، وتقارير أداء موثوقة بضغطة واحدة.",
+      "متابعة المؤشرات المالية والتشغيلية ومراجعة التقارير من مكان واحد.",
   },
   {
     icon: ShieldCheck,
     title: "الأمان والصلاحيات",
     description:
-      "عزل بيانات لكل منظمة وفرع، صلاحيات دقيقة لكل مستخدم، وسجل تدقيق كامل.",
+      "إدارة صلاحيات المستخدمين، مع فصل بيانات المؤسسات وسجل للعمليات الحساسة.",
   },
 ];
 
@@ -84,15 +86,17 @@ export default function Home() {
           <Link href="/about" className="ghost-link landing-nav-page">
             من نحن
           </Link>
-          <Link href="/#pricing" className="ghost-link landing-nav-page">
-            الأسعار
+          <Link href="#how-it-works" className="ghost-link landing-nav-page">
+            كيف تبدأ
+          </Link>
+          <Link href="#faq" className="ghost-link landing-nav-page">
+            الأسئلة الشائعة
           </Link>
           <Link href="/login" className="ghost-link">
             دخول الموظفين
           </Link>
-          <Link href="/login" className="primary-link">
-            <LogIn aria-hidden="true" className="link-icon" />
-            ابدأ الآن
+          <Link href={trialWhatsAppUrl} target="_blank" rel="noopener noreferrer" className="primary-link">
+            استفسر عن التجربة
           </Link>
         </nav>
       </header>
@@ -109,22 +113,24 @@ export default function Home() {
           التقرير.
         </h1>
         <p>
-          Ticketty هو نظام ERP تشغيلي لشركات النقل في السودان: الرحلات،
-          المبيعات، التحصيل النقدي، والتقارير — في مكان واحد بمعايير أمان
-          مصرفية.
+          Ticketty منظومة تشغيل لشركات النقل البري تجمع إدارة الرحلات،
+          والمبيعات، والتحصيل، والتقارير في مساحة عمل واحدة.
         </p>
         <div className="hero-actions">
-          <Link href="/login" className="primary-link">
-            <LogIn aria-hidden="true" className="link-icon" />
-            بوابة الموظفين
+          <Link href={trialWhatsAppUrl} target="_blank" rel="noopener noreferrer" className="primary-link">
+            استفسر عن تجربة 30 يوماً
           </Link>
-          <Link href="/login" className="ghost-link">
+          <Link href="#capabilities" className="ghost-link">
             <LayoutDashboard aria-hidden="true" className="link-icon" />
-            استعراض النظام
+            استعراض المميزات
+          </Link>
+          <Link href="/login" className="ghost-link employee-login-link">
+            <LogIn aria-hidden="true" className="link-icon" />
+            دخول الموظفين
           </Link>
         </div>
 
-        {/* Live product mockup — the hero centerpiece */}
+        {/* Illustrative product preview; values below are static demo content. */}
         <div className="hero-mockup" aria-hidden="true">
           <div className="mock-window">
             <div className="mock-titlebar">
@@ -210,9 +216,49 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <p className="mockup-caption">معاينة توضيحية لواجهة Ticketty — البيانات المعروضة تجريبية وليست بيانات تشغيل مباشرة.</p>
       </section>
 
-      <section className="landing-capabilities">
+      <section className="landing-screenshots" aria-labelledby="screenshots-title">
+        <header className="section-head">
+          <span className="eyebrow">من داخل النظام</span>
+          <h2 id="screenshots-title">تعرّف على واجهات Ticketty الفعلية</h2>
+          <p>لقطات حقيقية من واجهة النظام، لتكوين صورة أوضح عن تجربة الاستخدام.</p>
+        </header>
+        <div className="screenshot-grid">
+          <figure className="screenshot-card">
+            {/* eslint-disable-next-line @next/next/no-img-element -- local product screenshot */}
+            <img
+              src="/screenshots/ticketty-dashboard.webp"
+              alt="لقطة فعلية من لوحة التحكم في Ticketty"
+              loading="lazy"
+              width={560}
+              height={293}
+            />
+            <figcaption>
+              <strong>لوحة التحكم</strong>
+              <span>متابعة المؤشرات والانتقال إلى أقسام التشغيل من مكان واحد</span>
+            </figcaption>
+          </figure>
+          <figure className="screenshot-card">
+            {/* eslint-disable-next-line @next/next/no-img-element -- local product screenshot */}
+            <img
+              src="/screenshots/ticketty-login.webp"
+              alt="لقطة فعلية من بوابة دخول موظفي Ticketty"
+              loading="lazy"
+              width={560}
+              height={300}
+            />
+            <figcaption>
+              <strong>بوابة الموظفين</strong>
+              <span>واجهة تسجيل الدخول إلى مساحة عمل المؤسسة</span>
+            </figcaption>
+          </figure>
+        </div>
+        <p className="screenshots-note">اللقطات من بيئة العرض؛ وقد تختلف البيانات والمؤشرات بحسب المؤسسة وبيئة التشغيل.</p>
+      </section>
+
+      <section className="landing-capabilities" id="capabilities">
         <header className="section-head">
           <span className="eyebrow">لماذا Ticketty؟</span>
           <h2>كل ما تحتاجه شركة النقل، في منظومة واحدة</h2>
@@ -273,117 +319,104 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="landing-process" id="how-it-works" aria-labelledby="process-title">
+        <header className="section-head">
+          <span className="eyebrow">خطوتك الأولى</span>
+          <h2 id="process-title">كيف تبدأ مع Ticketty؟</h2>
+          <p>تعرّف على النظام أولاً، ثم ناقش مع الفريق طريقة التجربة المناسبة لطبيعة شركتك.</p>
+        </header>
+        <ol className="process-grid">
+          <li className="process-card">
+            <span className="process-number" aria-hidden="true">١</span>
+            <h3>تواصل معنا</h3>
+            <p>أرسل استفسارك عن التجربة المجانية لمدة 30 يوماً عبر واتساب.</p>
+          </li>
+          <li className="process-card">
+            <span className="process-number" aria-hidden="true">٢</span>
+            <h3>عرّفنا باحتياجك</h3>
+            <p>شاركنا نبذة عن نشاط شركتك والعمليات التي تريد تنظيمها.</p>
+          </li>
+          <li className="process-card">
+            <span className="process-number" aria-hidden="true">٣</span>
+            <h3>ناقش تفاصيل التجربة</h3>
+            <p>يوضح لك الفريق آلية العرض والتفعيل والخطوات المناسبة للبدء.</p>
+          </li>
+        </ol>
+      </section>
+
       <section className="landing-pricing" id="pricing">
         <div className="section-head">
-          <span className="eyebrow">الأسعار والاشتراكات</span>
-          <h2>خطة واحدة واضحة. بلا مفاجآت.</h2>
+          <span className="eyebrow">التجربة والاشتراك</span>
+          <h2>ابدأ بالتعرّف على Ticketty</h2>
           <p>
-            كل ما تحتاجه شركة النقل لتشغيل أسطولها بالكامل — سعر واحد
-            شهري بالجنيه السوداني، وتجربة مجانية كاملة أولاً.
+            يمكنك الاستفسار عن تفعيل تجربة مجانية لمدة 30 يوماً. تفاصيل الاشتراك
+            ستُعلن بعد اعتمادها رسمياً.
           </p>
         </div>
-        <div className="pricing-grid">
-          <div className="pricing-card">
-            <span className="plan-tag">تجربة مجانية</span>
-            <h3 className="plan-name">شهر كامل مجاناً</h3>
+        <div className="pricing-grid pricing-grid-single">
+          <div className="pricing-card pricing-featured pricing-announcement">
+            <span className="plan-tag">التسعير قيد الاعتماد</span>
+            <h3 className="plan-name">الاشتراك في Ticketty</h3>
             <div className="plan-price">
-              <strong>0</strong>
-              <span>SDG / 30 يوماً</span>
+              <strong>يُحدد لاحقاً</strong>
             </div>
             <p className="plan-desc">
-              كل الميزات كاملة دون أي قيود — جرّب التشغيل الحقيقي
-              لأسطولك قبل أي التزام مالي.
+              العملة المعتمدة للتسعير: <bdi>ج.س — جنيه سوداني (SDG)</bdi>.
+              لا نعرض سعراً قبل اعتماده رسمياً.
             </p>
-            <ul className="plan-features">
-              <li>كل شاشات التشغيل الـ 12</li>
-              <li>عدد غير محدود من المستخدمين والفروع</li>
-              <li>الرحلات والتذاكر والتقارير المالية</li>
-              <li>دعم فني على مدار الأسبوع</li>
-            </ul>
-            <Link href="/login" className="ghost-link plan-cta">
-              ابدأ التجربة المجانية
-            </Link>
-          </div>
-          <div className="pricing-card pricing-featured">
-            <span className="plan-tag">الخطة التشغيلية</span>
-            <h3 className="plan-name">الاشتراك الشهري</h3>
-            <div className="plan-price">
-              <strong>199,000</strong>
-              <span>SDG / شهرياً</span>
-            </div>
-            <p className="plan-desc">
-              المنظومة كاملة لكل فريقك: مبيعات، محاسبة مزدوجة، منفستو،
-              وكل التقارير — بسعر ثابت لا يتغير مع حجم عملياتك.
-            </p>
-            <ul className="plan-features">
-              <li>كل ميزات التجربة المجانية</li>
-              <li>عزل بيانات كامل بمعايير مصرفية</li>
-              <li>سجل تدقيق لكل عملية</li>
-              <li>نسخ احتياطي يومي مشفّر</li>
-              <li>ترقيات مستمرة بلا تكلفة إضافية</li>
-            </ul>
-            <Link href="/login" className="primary-link plan-cta">
-              اشترك الآن
-            </Link>
-          </div>
-          <div className="pricing-card">
-            <span className="plan-tag">وفر شهرين</span>
-            <h3 className="plan-name">الاشتراك السنوي</h3>
-            <div className="plan-price">
-              <strong>2,388,000</strong>
-              <span>SDG / سنوياً</span>
-            </div>
-            <p className="plan-desc">
-              نفس الخطة الشهرية بسعر 12 شهراً بسعر 10 — وفّر 398,000 SDG سنوياً مع أولوية دعم أعلى.
-            </p>
-            <ul className="plan-features">
-              <li>كل ميزات الخطة الشهرية</li>
-              <li>شهران مجاناً (وفّر 17%)</li>
-              <li>أولوية في الاستجابة والدعم</li>
-              <li>مدير حساب مخصص</li>
-            </ul>
-            <Link href="/login" className="ghost-link plan-cta">
-              اشترك سنوياً
+            <Link href={trialWhatsAppUrl} target="_blank" rel="noopener noreferrer" className="primary-link plan-cta">
+              استفسر عن تجربة 30 يوماً
             </Link>
           </div>
         </div>
-        <p className="pricing-note">
-          الأسعار بالجنيه السوداني وتشمل كل المستخدمين والفروع — لا رسوم
-          خفية ولا عدّادات. التجربة المجانية 30 يوماً ثم تُحوّل تلقائياً
-          بالسعر الشهري عند رغبتك.
-        </p>
+      </section>
+
+      <section className="landing-faq" id="faq" aria-labelledby="faq-title">
+        <header className="section-head">
+          <span className="eyebrow">إجابات واضحة</span>
+          <h2 id="faq-title">الأسئلة الشائعة</h2>
+          <p>معلومات أساسية قبل التواصل بشأن تجربة Ticketty.</p>
+        </header>
+        <div className="faq-list">
+          <details className="faq-item">
+            <summary>لمن صُممت Ticketty؟</summary>
+            <p>للشركات العاملة في النقل البري التي تريد تنظيم الرحلات والحجوزات والمبيعات ومتابعة العمليات والتقارير في نظام واحد.</p>
+          </details>
+          <details className="faq-item">
+            <summary>هل يمكنني تجربة النظام مجاناً؟</summary>
+            <p>يمكنك التواصل للاستفسار عن تفعيل تجربة مجانية لمدة 30 يوماً، وسيشرح لك الفريق خطوات البدء.</p>
+          </details>
+          <details className="faq-item">
+            <summary>كم تبلغ تكلفة الاشتراك؟</summary>
+            <p>لم يُعتمد السعر النهائي بعد. سنعلن تفاصيل الاشتراك بعد اعتمادها رسمياً، ويمكنك التواصل للاستفسار عن المستجدات.</p>
+          </details>
+          <details className="faq-item">
+            <summary>هل تسجيل الموظفين هو نفسه طلب التجربة؟</summary>
+            <p>لا. طلب التجربة والاستفسارات يتم عبر واتساب، أما الموظفون الذين لديهم حساب بالفعل فيمكنهم استخدام رابط «دخول الموظفين».</p>
+          </details>
+          <details className="faq-item">
+            <summary>هل الأرقام الظاهرة في معاينة الصفحة بيانات فعلية؟</summary>
+            <p>لا. الأرقام داخل المعاينة التوضيحية تجريبية، ولقطات الشاشة مأخوذة من بيئة العرض وقد تختلف البيانات بحسب المؤسسة وبيئة التشغيل.</p>
+          </details>
+        </div>
       </section>
 
       <section className="landing-cta">
         <div className="cta-panel">
-          <span className="eyebrow eyebrow-light">ابدأ التشغيل اليوم</span>
-          <h2>جاهز لتشغيل أسطولك على Ticketty؟</h2>
+          <span className="eyebrow eyebrow-light">الخطوة التالية</span>
+          <h2>هل تريد معرفة كيف تناسب Ticketty شركتك؟</h2>
           <p>
-            سجّل الدخول للوصول إلى مساحة عملك، أو تواصل مع فريق Suda
-            Technologies لتفعيل حساب منظمتك.
+            هل تدير شركة نقل وتريد معرفة كيف يمكن أن تناسب Ticketty عملياتك؟
+            تواصل مع فريق Suda Technologies للاستفسار عن تجربة النظام.
           </p>
-          <Link href="/login" className="primary-link">
+          <Link href={trialWhatsAppUrl} target="_blank" rel="noopener noreferrer" className="primary-link">
             <ArrowLeft aria-hidden="true" className="link-icon" />
-            الدخول إلى النظام
+            تواصل بشأن التجربة
           </Link>
         </div>
       </section>
 
       <footer className="landing-footer">
-        <div className="footer-stats">
-          <div className="footer-stat">
-            <strong>12</strong>
-            <span>شاشة تشغيلية</span>
-          </div>
-          <div className="footer-stat">
-            <strong>19</strong>
-            <span>خدمة API</span>
-          </div>
-          <div className="footer-stat">
-            <strong>100%</strong>
-            <span>تغطية اختبارات الأمان</span>
-          </div>
-        </div>
         <div className="footer-links">
           <Link href="/privacy" className="footer-legal-link">
             سياسة الخصوصية
@@ -398,8 +431,7 @@ export default function Home() {
           </Link>
         </div>
         <div className="footer-note">
-          <span>منتج من Suda-Technologies — الخرطوم، السودان</span>
-          <span className="status-dot">الأنظمة تعمل</span>
+          <span>منتج من Suda-Technologies — السودان</span>
         </div>
       </footer>
     </main>
