@@ -23,6 +23,7 @@ export type PosTripCard = Pick<
 export function fetchPosTrips(date?: string): Promise<PosTripCard[]> {
   const params = new URLSearchParams();
   if (date) params.set("date", date);
+  params.set("limit", "200");
   return apiClient<PosTripCard[]>(`/trips?${params.toString()}`);
 }
 
